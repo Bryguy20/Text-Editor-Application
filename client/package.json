@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Text-Editor-Application",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --mode production",
