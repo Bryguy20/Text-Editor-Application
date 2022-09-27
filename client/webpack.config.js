@@ -26,7 +26,7 @@ module.exports = () => {
       // Add to configure workbox plugins for a service worker and manifest file.
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'src=sw.js',
+        swDest: 'src-sw.js',
       }),
       // the manifest.json
       new WebpackPwaManifest({
@@ -62,7 +62,7 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              presents: ['@babel/preset-env'],
+              presets: ['@babel/preset-env'],
               plugins: [
                 "@babel/plugin-proposal-object-rest-spread",
                 "@babel/transform-runtime",
