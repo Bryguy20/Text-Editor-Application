@@ -22,11 +22,10 @@ export const putDb = async (content) => {
   // open the object store 
   const objStore = tx.objectStore('jate');
   // use the put() method to update the content in the Db
-  const request = objStore.put({content: content});
+  const request = objStore.put({id: 1, content: content});
   // confirm the data was updated
   const result = await request;
   console.log('data was updated', result);
-  return result;
 };
 
 // TODO: Add logic for a method that gets all the content from the database
@@ -35,15 +34,15 @@ console.log('Get data from the jateDb');
 // to connect the DB and version we want to use
 const jateDb = await openDB('jate', 1);
 // to make the transaction the need to specify the DB we are posting to and the data privileges.
-const tx = jateDb.transaction('jate', 'readwrite');
+const tx = jateDb.transaction('jate', 'readonly');
 // open the object store
 const objStore = tx.objectStore('jate');
 // we use the getAll() method to grab all the content in the DB
-const request = objStore.getAll();
+const request = objStore.get(1);
 // to confirm the data was fetched 
 const result = await request;
 console.log('data saved to the jateDB', result);
-return result;
+return result?.content;
 }; 
 
 
